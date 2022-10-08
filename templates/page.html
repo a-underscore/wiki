@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>{{page.title}}</p>
+
+<br />
+
+{{page.content|safe}}
+
+<br />
+
+<form action='{{url_for("edit_page", page_id=page.id)}}'>
+  <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+{% endblock content %}

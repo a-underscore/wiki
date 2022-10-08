@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Message type: {{message.type}}</p>
+<p>{{message.id}}<p>
+<a href="/profile/{{message.user_id}}/">From: {{message.user_id}}</a>
+<p>{{message.title}}</p>
+<p>{{message.content}}</p>
+
+<form method="POST">
+  <button type="submit" class="btn btn-primary">Accept</button>
+</form>
+
+{% endblock content %}

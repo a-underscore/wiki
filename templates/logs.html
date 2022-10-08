@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for log in logs %}
+
+<a href="/log/{{log.id}}/">{{log.id}}</a>
+<br />
+
+{% endfor %}
+
+<div style="width:500px;">
+  {% if not_first_page %}
+  <div style="float: left;">
+    <form id="thisone" action={{url_for("logs", page_id=page_id - 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Previous</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <p>{{page_id}}</p>
+
+  {% if not_last_page %}
+  <div style="float: right;">
+    <form id="thistoo" action={{url_for("logs", page_id=page_id + 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock content %}

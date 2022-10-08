@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Are you sure you want to delete this page?</p>
+
+<form method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Please enter the title of the page to continue.</label>
+    <input name="title" placeholder="{{page.title}}" type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+
+{% endblock content %}

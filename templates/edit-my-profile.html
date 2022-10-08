@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input name="email" placeholder="{{user.email}}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Username</label>
+    <input name="username" placeholder="{{user.username}}" type="username" class="form-control" id="exampleInputUsername1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+    <input name="confirm_password" type="password" class="form-control" id="exampleInputPassword2">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Current password</label>
+    <input name="current_password" type="password" class="form-control" id="exampleInputPassword2">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<br />
+
+<form action="{{url_for("delete_account")}}">
+  <button type="submit" class="btn btn-primary">Delete my account</button>
+</form>
+
+{% endblock content %}

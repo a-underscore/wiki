@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST">
+  {% block title %}
+  {% endblock title %}
+  <label for="formGroupExampleInput" class="form-label">Content</label>
+  <textarea name="content" id="editor">{% block text %}{% endblock text %}</textarea>
+  <br />
+  {% block score_needed %}
+  {% endblock score_needed %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% block delete_button %}{% endblock delete_button %}
+
+<script>
+  ClassicEditor
+  .create(document.querySelector('#editor'), {
+      ckfinder: {
+        uploadUrl: "{{url_for('upload')}}"
+      }
+    })
+  .then(editor => {
+    console.log(editor);
+  } )
+  .catch(error => {
+    console.error(error);
+  });
+</script>
+
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "profile-base.html" %}
+
+{% for log in logs %}
+<a href="/log/{{log.id}}/">Log id: {{log.id}}</a>
+<br />
+<a href="/page/{{log.page_id}}/">Post id: {{log.page_id}}</a>
+<br />
+<br />
+{% endfor %}
+
+{% block buttons %}
+<div style="width:500px;">
+  {% if not_first_page %}
+  <div style="float: left;">
+    <form id="thisone" action={{url_for("profile", user_id=user.id, page_id=page_id - 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Previous</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <p>{{page_id}}</p>
+
+  {% if not_last_page %}
+  <div style="float: right;">
+    <form id="thistoo" action={{url_for("profile", user_id=useer.id, page_id=page_id + 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+{% endblock buttons %}

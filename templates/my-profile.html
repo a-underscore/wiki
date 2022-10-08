@@ -1,0 +1,49 @@
+{% extends "profile-base.html" %}
+
+{% block extra %}
+
+<p>Email: {{user.email}}</p>
+<p>Verifed: {{user.verified}}</p>
+
+{% endblock extra %}
+
+{% block button %}
+
+<form action="{{url_for("edit_my_profile")}}">
+  <button type="submit" class="btn btn-primary">Edit my profile</button>
+</form>
+
+{% for log in logs %}
+<a href="/log/{{log.id}}/">Log id: {{log.id}}</a>
+<br />
+<a href="/page/{{log.page_id}}/">Post id: {{log.page_id}}</a>
+<br />
+<br />
+{% endfor %}
+
+{% endblock button %}
+
+{% block buttons %}
+<div style="width:500px;">
+  {% if not_first_page %}
+  <div style="float: left;">
+    <form id="thisone" action={{url_for("my_profile", page_id=page_id - 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Previous</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <p>{{page_id}}</p>
+
+  {% if not_last_page %}
+  <div style="float: right;">
+    <form id="thistoo" action={{url_for("my_profile", page_id=page_id + 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+{% endblock buttons %}
+

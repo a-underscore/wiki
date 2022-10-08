@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% block extra %}{% endblock extra %}
+
+<p>Username: {{user.username}}:{{user.id}}</p>
+<p>Points: {{user.score}}</p>
+
+{% block button %}
+
+{% if administrator %}
+<form action='{{url_for("delete_account")}}'>
+  <button type="submit" class="btn btn-primary">Delete this account</button>
+</form>
+{% endif %}
+
+{% endblock button %}
+
+{% block buttons %}
+{% endblock buttons %}
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "editor-base.html" %}
+
+{% block text %}{{page.content}}{% endblock text %}
+
+{% block title %}
+<p>{{page.title}}</p>
+<label for="formGroupExampleInput" class="form-label">Current score needed to edit: {{page.score_needed}}</label>
+<br />
+{% endblock title %}
+
+{% block score_needed %}
+
+<div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">Score needed to edit</label>
+  <input name="score_needed" type="text" class="form-control" id="formGroupExampleInput">
+</div>
+
+{% endblock score_needed %}
+
+{% block delete_button %}
+
+<br />
+
+<form action='{{url_for("delete_page", page_id=page.id)}}'>
+  <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+
+{% endblock delete_button %}

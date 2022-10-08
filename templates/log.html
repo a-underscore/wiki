@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="/log/{{log.id}}/">Log id: {{log.id}}</a>
+<br />
+<a href="/page/{{log.page_id}}/">Post id: {{log.page_id}}</a>
+
+<p>{{log.old_content}} to {{log.new_content}}</p>
+
+<p>{{log.old_score_needed}} to {{log.new_score_needed}}</p>
+
+{% endblock content %}

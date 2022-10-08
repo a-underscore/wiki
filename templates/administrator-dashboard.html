@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for message in messages %}
+
+<a href="/message/{{message.id}}/">Message ID: {{message.id}}</a>
+<br />
+<a href="/profile/{{message.user_id}}/">From: {{message.user_id}}</a>
+<p>{{message.title}}</p>
+
+{% endfor %}
+
+<div style="width:500px;">
+  {% if not_first_page %}
+  <div style="float: left;">
+    <form id="thisone" action={{url_for("administrator_dashboard", page_id=page_id - 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Previous</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <p>{{page_id}}</p>
+
+  {% if not_last_page %}
+  <div style="float: right;">
+    <form id="thistoo" action={{url_for("administrator_dashboard", page_id=page_id + 1)}}
+      method="POST">
+      <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock content %}
